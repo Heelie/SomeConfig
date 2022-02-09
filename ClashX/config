@@ -25,31 +25,13 @@ proxy-groups:
     type: select
     proxies:
       - 延迟最低
-      - 选择国家
       - 选择节点
       - 失败切换
       - 负载均衡
-  - name: 选择国家
-    type: select
-    proxies:
-      - 🇨🇳 CN
-      - 🇺🇸 US
   - name: 选择节点
     type: select
     use:
       - all
-  - name: 🇨🇳 CN
-    type: url-test
-    url: 'http://www.gstatic.com/generate_204'
-    interval: 300
-    use:
-      - cn
-  - name: 🇺🇸 US
-    type: url-test
-    url: 'http://www.gstatic.com/generate_204'
-    interval: 300
-    use:
-      - us
   - name: 延迟最低
     type: url-test
     use:
@@ -70,25 +52,9 @@ proxy-groups:
     interval: 300
 
 proxy-providers:
-  cn:
-    type: http
-    url: "http://m.chizzle.ml/clash/proxies?c=HK,TW&speed=15,30"
-    path: m.chizzle.ml/provider-cn.yaml
-    health-check:
-      enable: true
-      interval: 600
-      url: http://www.gstatic.com/generate_204
-  us:
-    type: http
-    url: "http://m.chizzle.ml/clash/proxies?c=US&speed=15,30"
-    path: m.chizzle.ml/provider-us.yaml
-    health-check:
-      enable: true
-      interval: 600
-      url: http://www.gstatic.com/generate_204
   all:
     type: http
-    url: "http://m.chizzle.ml/clash/proxies?c=HK,TW,US&speed=15,30"
+    url: "http://m.chizzle.ml/clash/proxies?c=CN&speed=15,30"
     path: m.chizzle.ml/provider.yaml
     health-check:
       enable: true
