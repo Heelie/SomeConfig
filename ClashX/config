@@ -1,5 +1,5 @@
 # 所有节点均从公开互联网上抓取，使用clash自动检查可用性即可
-# 抓取程序已开源： http://github.com/zu1k/proxypool
+# 抓取程序已开源： https://github.com/zu1k/proxypool
 
 # port of HTTP
 port: 7890
@@ -25,37 +25,47 @@ proxy-groups:
     type: select
     proxies:
       - 延迟最低
-      - 选择节点
       - 失败切换
+      - 手动选择
       - 负载均衡
-  - name: 选择节点
+  - name: 手动选择
     type: select
     use:
-      - all
+      - provider
   - name: 延迟最低
     type: url-test
     use:
-      - all
+      - provider
     url: 'http://www.gstatic.com/generate_204'
     interval: 300
   - name: 负载均衡
     type: load-balance
     use:
-      - all
+      - provider
     url: 'http://www.gstatic.com/generate_204'
     interval: 300
   - name: 失败切换
     type: fallback
     use:
-      - all
+      - provider
     url: 'http://www.gstatic.com/generate_204'
     interval: 300
+  # - name: 更新地址 https://www.vipiu.net/archives/2018/02/18/306.html
+  #   type: select
+  #   proxies:
+  #     - DIRECT
+  # - name: 欢迎访问 https://www.vipiu.net/
+  #   type: select
+  #   proxies:
+  #     - DIRECT
+
 
 proxy-providers:
-  all:
+  provider:
     type: http
-    url: "http://m.chizzle.ml/clash/proxies?c=CN&speed=15,30"
-    path: m.chizzle.ml/provider.yaml
+    url: "https://free886.herokuapp.com/clash/proxies"
+    interval: 3600
+    path: ./provider.yaml
     health-check:
       enable: true
       interval: 600
