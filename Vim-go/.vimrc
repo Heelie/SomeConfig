@@ -163,8 +163,10 @@ let g:godef_split=2
 map <F10> :NERDTreeToggle<CR>
 " 打开当前文件目录快捷键
 map <F1> :exec("NERDTree ".expand('%:h'))<CR>
+map <F2> :NERDTreeFind<CR>
 " 自动打开当前文件目录
 autocmd VimEnter * execute "NERDTree ".expand('%:h')
+"autocmd VimEnter * execute "NERDTreeFind"
 
 " 显示行号
 let NERDTreeShowLineNumbers=1
