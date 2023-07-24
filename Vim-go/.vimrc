@@ -24,6 +24,9 @@ set showmatch
 
 " 设置Tab长度为4空格
 set tabstop=4
+set expandtab
+" 加!是用于处理非空白字符之后的TAB(即所有的TAB)若不加!则只处理行首的TAB
+%retab!
 
 " 设置自动缩进长度为4空格
 set shiftwidth=4
@@ -279,7 +282,7 @@ map <silent> <F6> <Plug>StopMarkdownPreview
 :nn <Leader>6 6gt
 :nn <Leader>7 7gt
 :nn <Leader>8 8gt
-:nn <Leader>9 8gt
+:nn <Leader>9 9gt
 :nn <Leader>0 :tablast<CR>
 
 
